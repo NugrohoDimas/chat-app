@@ -9,4 +9,9 @@
     <string name="dont_have">Don\'t have an account?</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="profile">Profile</string>
+    <string name="def_name">Mojombo</string>
+    <string name="update">Update</string>
+    <string name="message_type">Ketikan Pesan...</string>
+    <string name="ex_message">Hai Mojo</string>
 </resources>

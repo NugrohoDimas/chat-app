@@ -1,6 +1,7 @@
 package its.nugrohodimas.chatapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import its.nugrohodimas.chatapp.R
 import its.nugrohodimas.chatapp.model.User
+import its.nugrohodimas.chatapp.view.ChatActivity
+import java.util.*
 
 class UserAdapter(private val context: Context, private val userList: ArrayList<User>) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
@@ -26,7 +29,9 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
         holder.bind(user,context)
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, user.userName, Toast.LENGTH_SHORT).show()
+            context.startActivity(Intent(context, ChatActivity::class.java).apply {
+                putExtra(ChatActivity.EXTRA_DATA, user)
+            })
         }
     }
 

@@ -3,6 +3,7 @@
     package="its.nugrohodimas.chatapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
-        <activity android:name=".view.UsersActivity"></activity>
+        <activity
+            android:name=".view.ChatActivity"
+            android:exported="true"
+            android:parentActivityName=".view.UsersActivity" />
+        <activity
+            android:name=".view.ProfileActivity"
+            android:label="@string/profile"
+            android:parentActivityName=".view.UsersActivity" />
+        <activity
+            android:name=".view.UsersActivity"
+            android:parentActivityName=".view.LoginActivity" />
         <activity android:name=".view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +30,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.HomeActivity" />
-        <activity android:name=".view.RegisterActivity">
-        </activity>
+        <activity android:name=".view.RegisterActivity" />
+
+        <service
+            android:name=".firebase.FirebaseService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
